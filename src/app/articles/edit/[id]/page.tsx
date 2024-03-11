@@ -16,7 +16,7 @@ const EditBlogPage = ({ params }: { params: { id: string } }) => {
       if (!id) return;
       setLoading(true);
       const API_URL = process.env.NEXT_PUBLIC_API_URL;
-      const res = await fetch(`${API_URL}/api/${id}`);
+      const res = await fetch(`${API_URL}/api/blog/${id}`);
       const data = await res.json();
       setUrl(data.id);
       setTitle(data.title);
@@ -31,7 +31,7 @@ const EditBlogPage = ({ params }: { params: { id: string } }) => {
     e.preventDefault();
     setLoading(true);
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
-    await fetch(`${API_URL}/api/update/${id}`, {
+    await fetch(`${API_URL}/api/blog/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

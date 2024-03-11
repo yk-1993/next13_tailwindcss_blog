@@ -11,7 +11,7 @@ const DeleteButton = ({ id }: DeleteButtonProps) => {
   const router = useRouter();
   const onHandleDelete = async () => {
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
-    const res = await fetch(`${API_URL}/api/${id}`, {
+    const res = await fetch(`${API_URL}/api/blog/${id}`, {
       method: 'DELETE',
     });
     const detailArticle = await res.json();

@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 
 const ArticlesHome = async () => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  // const articles = await getAllArticles();
   const res = await fetch(`${API_URL}/api`, { cache: 'no-store' });
   const articles = await res.json();
   return (

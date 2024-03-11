@@ -10,7 +10,12 @@ type DeleteButtonProps = {
 const DeleteButton = ({ id }: DeleteButtonProps) => {
   const router = useRouter();
   const onHandleDelete = async () => {
-    await deleteArticle(id);
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    const res = await fetch(`${API_URL}/api/${id}`, {
+      method: 'DELETE',
+    });
+    const detailArticle = await res.json();
+
     router.push('/');
     router.refresh();
   };

@@ -6,9 +6,9 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
+    const { id, title, content } = req.body
     const { data, error } = await supabase
-        .from('posts')
-        .select('*')
+        .from('posts').insert({ id, title, content, createdAt: new Date().toISOString() })
     if (error) {
         res.status(500).json({ message: 'Error fetching posts' })
         return
